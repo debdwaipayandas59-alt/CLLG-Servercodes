@@ -1,0 +1,25 @@
+#!/bin/sh
+
+
+read -p "Enter a string or number: " input
+
+len=${#input}
+is_palindrome=1
+
+for i in $(seq 0 $((len / 2 - 1))); do
+ 
+    first=$(echo "$input" | cut -c $((i + 1)))
+ 
+    last=$(echo "$input" | cut -c $((len - i)))
+    
+    if [ "$first" != "$last" ]; then
+        is_palindrome=0
+        break
+    fi
+done
+
+if [ $is_palindrome -eq 1 ]; then
+    echo "It is a Palindrome."
+else
+    echo "It is NOT a Palindrome."
+fi
