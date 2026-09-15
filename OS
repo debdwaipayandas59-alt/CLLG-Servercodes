@@ -1,0 +1,14 @@
+#!/bin/sh
+
+
+read -p "Enter the number: " num
+read -p "Enter current base (2-16): " ibase
+read -p "Enter target base (2-16): " obase
+
+
+num=$(echo "$num" | tr 'a-z' 'A-Z')
+
+
+result=$(echo "ibase=$ibase; obase=$obase; $num" | bc)
+
+echo "Result: $result"
